@@ -1,0 +1,8 @@
+val x = 10;
+var y = 20 + x;
+println("Resultado:");
+if (y > 30) {
+    y = 50;
+} else {
+    y = 5;
+}

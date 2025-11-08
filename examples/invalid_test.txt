@@ -1,0 +1,4 @@
+val x = 10;
+if x > 5 { // Faltam parênteses na condição
+    x = 20;
+}

@@ -19,7 +19,7 @@ def parse_input(text):
 def interactive_mode():
     print("--- Kotlin Parser (SLY) - Modo Interativo ---")
     print("Digite o código Kotlin. Pressione Ctrl+C ou digite 'exit' para sair.")
-    print("Para delimitar comandos, use ';'.")
+
     while True:
         try:
             # Usa '>>> ' para o prompt de entrada

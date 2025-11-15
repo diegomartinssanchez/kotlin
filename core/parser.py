@@ -3,11 +3,11 @@ from core.lexer import KotlinLexer # Importa o Lexer que acabamos de criar
 
 class KotlinParser(Parser):
     # 1. Configuração básica do Parser
-    debugfile = 'parser.out' # Gera o arquivo de debug conforme a tarefa [cite: 22, 23]
+    debugfile = 'parser.out' # Gera o arquivo de debug conforme a tarefa
     tokens = KotlinLexer.tokens
 
     # 2. Regras de Precedência (para expressões, seguindo a ordem matemática)
-    # A precedência ajuda a resolver ambiguidades, como a do 'id + id * id' que você viu no material. [cite: 150, 173]
+    # A precedência ajuda a resolver ambiguidades, como a do 'id + id * id'.
     precedence = (
         ('left', PLUS, MINUS),
         ('left', TIMES, DIVIDE),
@@ -22,7 +22,8 @@ class KotlinParser(Parser):
         return ('program', p.statement_list)
 
     @_('statement SEMICOLON statement_list',
-       'statement SEMICOLON')
+       'statement SEMICOLON',
+        'statement')
     def statement_list(self, p):
         # A lista de comandos permite que o ponto e vírgula delimite comandos
         if len(p) == 3:
@@ -54,9 +55,9 @@ class KotlinParser(Parser):
 
     # Comando 'println'
     # Ex: println("texto")
-    @_('PRINTLN LPAREN (STRING | expression) RPAREN')
+    @_('PRINTLN LPAREN STRING RPAREN', 'PRINTLN LPAREN expression RPAREN')
     def println_stmt(self, p):
-        return ('println', p[2]) # O p[2] pode ser uma STRING ou uma expression
+        return ('println', p[2])
 
     # Comando 'if' simples
     # Ex: if (condicao) { statement_list }
@@ -76,7 +77,7 @@ class KotlinParser(Parser):
     def condition(self, p):
         return ('condition', p[1], p.expression0, p.expression1)
 
-    # Expressões Aritméticas (Regras de expressão matemática, como no material [cite: 63, 64])
+    # Expressões Aritméticas (Regras de expressão matemática, como no material)
     @_('expression PLUS expression',
        'expression MINUS expression',
        'expression TIMES expression',

@@ -7,7 +7,7 @@ class KotlinLexer(Lexer):
         # Palavras-chave do Kotlin
         VAL, VAR, IF, ELSE, PRINTLN,
         # Símbolos
-        EQ, PLUS, MINUS, TIMES, DIVIDE, LPAREN, RPAREN, SEMICOLON,
+        EQ, PLUS, MINUS, UMINUS, TIMES, DIVIDE, LPAREN, RPAREN, SEMICOLON, LBRACE, RBRACE,
         # Operadores de Comparação
         GT, LT, EQEQ
     }
@@ -37,6 +37,8 @@ class KotlinLexer(Lexer):
     LPAREN = r'\('
     RPAREN = r'\)'
     SEMICOLON = r';'      # Ponto e vírgula, opcional no Kotlin, mas bom para delimitar
+    LBRACE = r'\{'
+    RBRACE = r'\}'
     
     # Operadores de Comparação
     EQEQ = r'=='

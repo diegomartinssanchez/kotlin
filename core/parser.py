@@ -7,7 +7,7 @@ class KotlinParser(Parser):
     tokens = KotlinLexer.tokens
 
     # 2. Regras de Precedência (para expressões, seguindo a ordem matemática)
-    # A precedência ajuda a resolver ambiguidades, como a do 'id + id * id'.
+    # A precedência ajuda a resolver ambiguidades, como a do 'id + id * id' que você viu no material.
     precedence = (
         ('left', PLUS, MINUS),
         ('left', TIMES, DIVIDE),
